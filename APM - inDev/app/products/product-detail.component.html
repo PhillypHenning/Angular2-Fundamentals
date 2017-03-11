@@ -1,9 +1,9 @@
 <div class='panel panel-primary' *ngIf='product'>
     <div class='panel-heading'>
         {{ pageTitle }}
+
+        <mgnfy-btn></mgnfy-btn>
     </div>
-
-
 
     <div class="panel-body">
         <div class="row">
@@ -25,31 +25,49 @@
 
                 <div class="row">
                     <div class="col-md-3">Availability: </div>
-                    <div class="col-md-6">{{ ProductAvailable }}</div>
+                    <div class="col-md-6">{{ product.releaseDate }}</div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">Price: </div>
-                    <div class="col-md-6">{{ product.price }}</div>
+                    <div class="col-md-6">{{ product.price | currency: 'USD' : true : '1.2-2' | lowercase }}</div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">5 Star Rating: </div>
-                    <div class="col-md-6"> {{ product.starRating }}</div>
+                    <div class="col-md-6">
+                        <ai-star [rating]='product.starRating'
+                                 (ratingClicked)='onRatingClicked($event)'>
+                        </ai-star>
+                    </div>
                 </div>
-        </div>
-
-        <div class="col-md-6">
+            </div>
             <div class="row">
-
+                <div class="col-md-6">
+                    <div class="row">
+                      <img class = 'center-block img-responsive'
+                         [src] = 'product.imageUrl'
+                         [title] = 'product.productName'
+                         [style.width.px] = '200'
+                         [style.margin.px] = '2'
+                      >
+                    </div>
+                <div class="row">
+                    <div class = "col-md-3">
+                        <a class="magnifier-thumb-wrapper" href="http://en.wikipedia.org/wiki/File:Starry_Night_Over_the_Rhone.jpg">
+                            <img id="thumb" src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Starry_Night_Over_the_Rhone.jpg/200px-Starry_Night_Over_the_Rhone.jpg">
+                        </a>
+                        <div class="magnifier-preview" id="preview" style="width: 200px; height: 133px">Starry Night Over The Rhone<br>by Vincent van Gogh</div>
+                            <h1>TestTestTest</h1>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+
 
     <div class='panel-footer'>
         <a class='btn btn-default' (click)='onBack()' style='width:80px'>
             <i class='glyphicon glyphicon-chevrom-left'></i> Back
         </a>
     </div>
-
 </div>

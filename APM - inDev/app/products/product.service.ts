@@ -40,11 +40,8 @@ export class ProductService{
 
     getProduct( id : number ) : Observable<IProduct> {
      // Returns a Observable sequence of a single IProduct
-        return this._http.get( this._productUrl )
-            .map(( response : Response ) => <IProduct[]> response.json())
-            .do( data => console.log('Single Item: ' + JSON.stringify( data[ id - 1] )))
-            // id - 1 for index considerations
-            .catch( this.handleError );
+        return this.getProducts()
+            .map(( products : IProduct[] ) => products.find( p => p.productId === id ));
     }
 
     private handleError( error : Response ) {

@@ -11,6 +11,7 @@ import { ProductListComponent } from './products/product-list.component';
 import { ProductFilterPipe } from './products/product-filter.pipe';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { StarComponent } from './shared/star.component';
+import { MagnifyComponent } from './magnify/magnify.component'
 
 @NgModule({
   imports: [BrowserModule,
@@ -32,7 +33,8 @@ import { StarComponent } from './shared/star.component';
                   ProductFilterPipe,
                   StarComponent,
                   WelcomeComponent,
-                  ProductDetailComponent
+                  ProductDetailComponent,
+                  MagnifyComponent
   ],
   providers: [ ProductDetailGuard ],
   bootstrap: [ AppComponent ]
